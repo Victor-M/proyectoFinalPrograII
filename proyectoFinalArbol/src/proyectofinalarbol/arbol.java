@@ -239,8 +239,7 @@ public class arbol {
     
     public void imprimePos(){
         imprimePos(this.Raiz);
-    }
-    
+    } 
         public void imprimePos(nodo n){
         if (n!=null){
             imprimePos(n.getHijoIzq());
