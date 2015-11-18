@@ -7,8 +7,7 @@ package proyectofinalarbol;
 public class arbol {
     public nodo Raiz;
     
-    public arbol()
-    {
+    public arbol(){
         this.Raiz = null;
     }
     
@@ -23,14 +22,14 @@ public class arbol {
     }
 
     public String insertar(int valor){
-            
             nodo n = new nodo(valor);
             
-            if (getRaiz() == null){
+        if (getRaiz() == null){
                 setRaiz(n);
             }
             else{
-                nodo temporal = getRaiz();
+             nodo temporal = getRaiz();
+                
                 while (temporal !=null){
                     n.setraiz(temporal);
                     if (n.getDato()>temporal.getDato()){
@@ -40,11 +39,11 @@ public class arbol {
                         temporal = temporal.getHijoIzq();
                     }
                 }
-                if (n.getDato()<n.getraiz().getDato()){
-                    n.raiz.setHijoIzq(n);
-                    
+                
+         if (n.getDato()<n.getraiz().getDato()){
+                    n.raiz.setHijoIzq(n); 
                 }
-                else{
+                    else{
                     n.raiz.setHijoDer(n);
                 }
             }  
@@ -83,8 +82,8 @@ public class arbol {
           else 
             if (num>nodo.getDato()){
               eliminar(nodo.getHijoDer(),num);
-              
             }
+            
           else 
             if (num<nodo.getDato()){
               eliminar(nodo.getHijoIzq(),num);
@@ -116,8 +115,7 @@ public class arbol {
         nodo hijoIzquierdo = nodo.getraiz().getHijoIzq();
        
         nodo Hijo = nodo.getHijoIzq() != null ? 
-            
-            nodo.getHijoIzq() : nodo.getHijoDer();
+        nodo.getHijoIzq() : nodo.getHijoDer();
  
         if ( hijoIzquierdo == nodo ) {
             nodo.getraiz().setHijoIzq(Hijo);
@@ -152,7 +150,6 @@ public class arbol {
         }
         return false;
     }
-    
         nodo RecorrerIzq(nodo nodo) {
         if (nodo.getHijoIzq() != null) {
             return RecorrerIzq( nodo.getHijoIzq() );
@@ -161,36 +158,35 @@ public class arbol {
     }
 
     public void BuscarDere(int num){
-              BuscarDere(this.Raiz,num);
-                  
+              BuscarDere(this.Raiz,num);              
         }
-          
+      
          public void BuscarDere(nodo n,int num){
               
              if (n.getHijoDer()==null){
                     System.out.println("na");
                 }
              else
-            if (n.getDato()==num){
+            
+                 if (n.getDato()==num){
                System.out.println(n.getHijoDer().getDato());
             }
              else 
-            if (num>n.getDato()){
+                 
+                 if (num>n.getDato()){
                         n = n.getHijoDer();
-                        BuscarDere(n,num);
-                    
+                        BuscarDere(n,num);    
             }
              else 
-            if (num<n.getDato()){
+                     
+                 if (num<n.getDato()){
                     n = n.getHijoIzq();
                         BuscarDere(n,num);
              }
          }
         
     public void BuscarIzq(int num){
-              
-        BuscarIzq(this.Raiz,num);
-                         
+        BuscarIzq(this.Raiz,num);        
         }
       
      public void BuscarIzq(nodo n,int num){
@@ -198,16 +194,19 @@ public class arbol {
               if (n.getHijoIzq()==null){
                     System.out.println("na");
                 }
-             else   
-           if (n.getDato()==num){
+              else   
+           
+                if (n.getDato()==num){
                System.out.println(n.getHijoIzq().getDato());
-           }
-           else if (num>n.getDato()){
+                }
+              else
+                    
+                if (num>n.getDato()){
                         n = n.getHijoDer();
                         BuscarIzq(n,num);
-                    
-             }
-                else if (num<n.getDato()){
+                    }
+                else 
+                  if (num<n.getDato()){
                     n = n.getHijoIzq();
                         BuscarIzq(n,num);
                 }
