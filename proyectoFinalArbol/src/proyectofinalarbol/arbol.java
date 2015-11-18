@@ -6,7 +6,6 @@ package proyectofinalarbol;
  */
 public class arbol {
     public nodo Raiz;
-    
     public arbol(){
         this.Raiz = null;
     }
@@ -52,11 +51,11 @@ public class arbol {
     
     //METODO PARA ELIMINAR UN NODO
     
-    public void eliminar(int num){
-        eliminar(this.Raiz,num);
+    public void elimina(int num){
+        elimina(this.Raiz,num);
     }
     
-    public boolean eliminar(nodo nodo,int num){
+    public boolean elimina(nodo nodo,int num){
         
         if (num==nodo.getDato()){
             
@@ -81,27 +80,27 @@ public class arbol {
         }
           else 
             if (num>nodo.getDato()){
-              eliminar(nodo.getHijoDer(),num);
+              elimina(nodo.getHijoDer(),num);
             }
             
           else 
             if (num<nodo.getDato()){
-              eliminar(nodo.getHijoIzq(),num);
+              elimina(nodo.getHijoIzq(),num);
              }
         return false;                 
     }
      
     public boolean Caso1( nodo nodo ) {
         
-        nodo hijoDerecho = nodo.getraiz().getHijoDer();
-        nodo hijoIzquierdo = nodo.getraiz().getHijoIzq();
+        nodo HijoDerecho = nodo.getraiz().getHijoDer();
+        nodo HijoIzquierdo = nodo.getraiz().getHijoIzq();
         
-        if ( hijoIzquierdo == nodo ) {
+        if ( HijoIzquierdo == nodo ) {
             nodo.getraiz().setHijoIzq( null );
             return true;
         }
  
-        if ( hijoDerecho == nodo) {
+        if ( HijoDerecho == nodo) {
             nodo.getraiz().setHijoDer( null );
             return true;
         }
@@ -114,13 +113,13 @@ public class arbol {
         nodo hijoDerecho = nodo.getraiz().getHijoDer();
         nodo hijoIzquierdo = nodo.getraiz().getHijoIzq();
        
-        nodo Hijo = nodo.getHijoIzq() != null ? 
+        nodo hijoActual = nodo.getHijoIzq() != null ? 
         nodo.getHijoIzq() : nodo.getHijoDer();
  
         if ( hijoIzquierdo == nodo ) {
-            nodo.getraiz().setHijoIzq(Hijo);
+            nodo.getraiz().setHijoIzq(hijoActual);
  
-            Hijo.setraiz(nodo.getraiz());
+            hijoActual.setraiz(nodo.getraiz());
             nodo.setHijoDer(null);
             nodo.setHijoIzq(null);
  
@@ -128,24 +127,23 @@ public class arbol {
         }
  
         if ( hijoDerecho == nodo) {
-            nodo.getraiz().setHijoDer(Hijo );
-            Hijo.setraiz(nodo.getraiz());
+            nodo.getraiz().setHijoDer(hijoActual );
+            hijoActual.setraiz(nodo.getraiz());
             nodo.setHijoDer(null);
             nodo.setHijoIzq(null);
  
             return true;
         } 
- 
         return false;
     }
     
-    public boolean Caso3( nodo nodo,int nro ) {
+    public boolean Caso3( nodo nodo,int num ) {
         
         nodo aLaIzquierda = RecorrerIzq( nodo.getHijoDer() );
         
         if ( aLaIzquierda != null ) {
             nodo.setDato(aLaIzquierda.getDato() );
-            eliminar(aLaIzquierda,nro);
+            elimina(aLaIzquierda,num);
             return true;
         }
         return false;
@@ -157,11 +155,11 @@ public class arbol {
         return nodo;
     }
 
-    public void BuscarDere(int num){
-              BuscarDere(this.Raiz,num);              
+    public void BuscarHijoDer(int num){
+              BuscarHijoDer(this.Raiz,num);              
         }
       
-         public void BuscarDere(nodo n,int num){
+         public void BuscarHijoDer(nodo n,int num){
               
              if (n.getHijoDer()==null){
                     System.out.println("na");
@@ -175,40 +173,37 @@ public class arbol {
                  
                  if (num>n.getDato()){
                         n = n.getHijoDer();
-                        BuscarDere(n,num);    
+                        BuscarHijoDer(n,num);    
             }
              else 
-                     
-                 if (num<n.getDato()){
+                    if (num<n.getDato()){
                     n = n.getHijoIzq();
-                        BuscarDere(n,num);
+                      BuscarHijoDer(n,num);
              }
          }
         
-    public void BuscarIzq(int num){
-        BuscarIzq(this.Raiz,num);        
+    public void BuscarHijoIzq(int num){
+        BuscarHijoIzq(this.Raiz,num);        
         }
       
-     public void BuscarIzq(nodo n,int num){
+     public void BuscarHijoIzq(nodo n,int num){
           
               if (n.getHijoIzq()==null){
                     System.out.println("na");
                 }
               else   
-           
                 if (n.getDato()==num){
                System.out.println(n.getHijoIzq().getDato());
                 }
-              else
-                    
+              else   
                 if (num>n.getDato()){
                         n = n.getHijoDer();
-                        BuscarIzq(n,num);
+                        BuscarHijoIzq(n,num);
                     }
                 else 
                   if (num<n.getDato()){
                     n = n.getHijoIzq();
-                        BuscarIzq(n,num);
+                        BuscarHijoIzq(n,num);
                 }
            
           }   
